@@ -1,0 +1,12 @@
+version: "3.6"
+
+services:
+  app:
+    build: .
+#    command: flask run app.py --server.port 5000
+    ports:
+      - "5000:5000"
+  redis:
+    image: "redis:alpine"
+
+
