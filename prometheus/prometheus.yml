@@ -1,0 +1,30 @@
+# my global config
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+rule_files:
+  - rules.yml
+  - node_alert.yml
+  - memery_alerts.yml
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - localhost:9093
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets:
+      - 'localhost:9090'
+  - job_name: 'node exporter'
+    static_configs:
+    - targets:
+      - 'localhost:9100'
+  - job_name: 'Project App'
+    static_configs:
+    - targets:
+      - 'localhost:8010'
+  - job_name: 'cAdvisor'
+    static_configs:
+    - targets:
+      - 'localhost:8082'

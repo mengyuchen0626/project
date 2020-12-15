@@ -1,0 +1,11 @@
+groups:
+- name: memery_alerts
+  rules:
+  - alert: HighMemery
+    expr: (1 - (process_resident_memory_bytes / (node_memory_MemTotal_bytes)))* 100 > 90
+    for: 10s
+    labels:
+      serverity: warning
+    annotations:
+      summary: "Instance {{ $labels.instance }} high memery"
+      description: "{{ $labels.instance }} of job {{$labels.job}}usage of memery is more than 90% the rate is[{{ $value }}]."

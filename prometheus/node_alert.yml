@@ -1,0 +1,11 @@
+groups:
+- name: node_alert
+  rules:
+  - alert: HighNodeCPU
+    expr: 100-avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance)*100 > 80
+    for: 10s
+    labels:
+      serverity: warning
+    annotations:
+      summary: "Instance {{ $labels.instance }} The usage of cpu is too high"
+      description: "{{ $labels.instance }} of job {{$labels.job}}the usage of cpu is too high,the rate is[{{ $value }}]."
