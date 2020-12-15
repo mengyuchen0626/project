@@ -8,8 +8,12 @@
         <input type = "text" name= "text" style="width:400px; height:60px;"/> <br><br>
         <input type="hidden" name="get_result"/> 
         <input type = "submit" value="Submit"><br><br><br>
-     <H4><p style="color:#FDFAFD";>{{result}} </p ></H4> 
-      
+        {% if text != '' %}
+            <p id=text style="color: #FDFAFD;">Similar Tweets Top 20:</p>
+            {% for x in result %}
+                <p style="color: #FDFAFD;">{{x}}</p>
+            {% endfor %}
+        {% endif %}      
         </center>
     </form>
     
