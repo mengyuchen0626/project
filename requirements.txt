@@ -5,3 +5,4 @@ pandas
 gensim
 nltk
 numpy
+prometheus-client
